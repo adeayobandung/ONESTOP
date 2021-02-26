@@ -1,0 +1,21 @@
+{
+    "name": "ssdm/onestop",
+    "description": "ONE STOP SERVICE is Integration System is Single-sign-on PORTAL",
+    "type": "library",
+    "keywords": ["singlesignon", "authentication"],
+    "require": {
+        "jasig/phpcas": "^1.3",
+        "php": ">=5.3"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ade Indra Saputra",
+            "email": "adeayobandung@gmail.com"
+        }
+    ],
+    "minimum-stability": "beta",
+    "autoload": {
+        "psr-0": { "SSO": "."}
+    }
+}
