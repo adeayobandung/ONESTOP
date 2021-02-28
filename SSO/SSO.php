@@ -39,12 +39,12 @@ use phpCAS;
 /**
  * CAS server host address
  */
-define('CAS_SERVER_HOST', 'sso.ui.ac.id');
+define('CAS_SERVER_HOST', 'onestopservice.ssdm.polri.go.id');
 
 /**
  * CAS server uri
  */
-define('CAS_SERVER_URI', '/cas2');
+define('CAS_SERVER_URI', '/cas');
 
 /**
  * CAS server port
@@ -120,16 +120,10 @@ class SSO
     // Create new user object, initially empty.
     $user = new \stdClass();
     $user->username = phpCAS::getUser();
-    $user->name = $details['nama'];
-    $user->role = $details['role'];
-
-    if ($user->role === 'personel') {
-      $user->nrp = $details['nrp'];
-
-    }
-    else if ($user->role === 'umum') {
-      $user->nik = $details['nik'];
-    }
+    $user->email = $details['mail'];
+    $user->nama_lengkap = $details['nama_lengkap'];
+    $user->jns_kelamin = $details['jns_kelamin'];
+    $user->nrp_nik_id = $details['nrp_nik_id'];
 
     return $user;
   }
@@ -159,6 +153,19 @@ class SSO
 
     // Set no validation.
     phpCAS::setNoCasServerValidation();
+  }
+
+  public static function renew()
+  {
+    phpCAS::renewAuthentication();
+
+    // logout if desired
+    if (isset($_REQUEST['session'])) {
+        session_unset();
+        session_destroy();
+        unset($_REQUEST['session']);
+        header("Location: ".$_SERVER['PHP_SELF']);
+    }
   }
 
 }

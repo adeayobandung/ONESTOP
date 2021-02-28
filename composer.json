@@ -4,8 +4,8 @@
     "type": "library",
     "keywords": ["singlesignon", "authentication"],
     "require": {
-        "jasig/phpcas": "^1.3",
-        "php": ">=5.3"
+        "php": ">=5.3",
+        "jasig/phpcas": "^1.3"
     },
     "license": "MIT",
     "authors": [
